@@ -18,6 +18,16 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.save
+
+    redirect_to groups_path
+  end
+
+  def update
+    @group = Group.find(params[:id])
+
+    @group.update(group_params)
+
+    redirect_to groups_path, notice: "Update success"
   end
 
   private
